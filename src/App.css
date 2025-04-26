@@ -1,0 +1,119 @@
+/* App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 00vh;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.game {
+  text-align: center;
+  border: 2px solid #333;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #93757f;
+  box-shadow: 0 4px 8px rgba(150, 188, 67, 0.2);
+  max-width: 90vw;
+  overflow-x: auto;
+}
+
+.settings {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  margin: 0 auto 20px;
+}
+
+.settings label {
+  font-size: 16px;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+.settings input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.settings input:focus {
+  border-color: #8c3a3a;
+  outline: none;
+}
+
+.settings button {
+  background-color: #9c3a3a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.settings button:hover {
+  background-color: #942222;
+}
+
+.status {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.board {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.square {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 24px;
+  background-color: #49484b;
+  border: 2px solid #661c1c;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.square:hover {
+  background-color: #eaedef;
+}
+
+.reset {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #9c3a3a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reset:hover {
+  background-color: #942222;
+}
