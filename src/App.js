@@ -188,8 +188,22 @@ const TicTacToe = () => {
         )}
 
         {showPopup && (
-          <div className="popup">
-            🎉 Congratulations {winner} 🎉
+          <div className="popup celebration">
+            {winner === "Draw" ? "😅 It's a Draw!" : `🎉 Congratulations ${winner} 🎉`}
+            <div className="confetti-container">
+              {Array.from({ length: 100 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="confetti"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    animationDuration: `${2 + Math.random() * 2}s`,
+                    animationDelay: `${Math.random()}s`,
+                    '--random': Math.random(),
+                  }}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
