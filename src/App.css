@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 00vh;
+  min-height: 100vh;
   padding: 20px;
   overflow-y: auto;
 }
@@ -116,4 +116,19 @@ body {
 
 .reset:hover {
   background-color: #942222;
+}
+
+/* New celebration animation */
+.celebration {
+  font-size: 26px;
+  color: gold;
+  margin-top: 20px;
+  font-weight: bold;
+  animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }

@@ -1,29 +1,27 @@
-// App.js
 import React, { useState } from 'react';
 import './App.css';
 
 const TicTacToe = () => {
-  const [n, setN] = useState(3); // Board size: 3x3
-  const [m, setM] = useState(3); // Win condition: 3 marks in a row
-  const [board, setBoard] = useState(Array(n * n).fill(null));
+  const [n, setN] = useState(3); // Board size
+  const [m, setM] = useState(3); // Win condition
+  const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [winner, setWinner] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Initialize the board with empty values
   const initializeBoard = () => Array(n * n).fill(null);
 
-  // Handle start game logic
   const handleStartGame = () => {
     setBoard(initializeBoard());
     setIsXNext(true);
     setWinner(null);
     setGameStarted(true);
     setGameOver(false);
+    setShowPopup(false);
   };
 
-  // Handle click logic
   const handleClick = (index) => {
     if (board[index] || gameOver) return;
 
@@ -40,9 +38,11 @@ const TicTacToe = () => {
     if (playerWin) {
       setWinner(currentPlayer);
       setGameOver(true);
+      setShowPopup(true); // Show congratulations
     } else if (!opponentCanStillWin) {
-      setWinner(currentPlayer); // opponent cannot win anymore
+      setWinner(currentPlayer);
       setGameOver(true);
+      setShowPopup(true); // Show congratulations
     } else if (newBoard.every((cell) => cell !== null)) {
       setWinner('Draw');
       setGameOver(true);
@@ -51,7 +51,6 @@ const TicTacToe = () => {
     }
   };
 
-  // Check if a player has won
   const checkWin = (squares, player) => {
     const directions = [
       [0, 1],  // Horizontal
@@ -80,13 +79,12 @@ const TicTacToe = () => {
     return false;
   };
 
-  // Check if the opponent can still win
   const canStillWin = (squares, player) => {
     const directions = [
-      [0, 1],  // Horizontal
-      [1, 0],  // Vertical
-      [1, 1],  // Diagonal (Top-Left to Bottom-Right)
-      [1, -1], // Diagonal (Top-Right to Bottom-Left)
+      [0, 1],
+      [1, 0],
+      [1, 1],
+      [1, -1],
     ];
 
     for (let row = 0; row < n; row++) {
@@ -117,13 +115,13 @@ const TicTacToe = () => {
     return false;
   };
 
-  // Handle reset of the game
   const handleReset = () => {
     setBoard(initializeBoard());
     setIsXNext(true);
     setWinner(null);
     setGameStarted(false);
     setGameOver(false);
+    setShowPopup(false);
   };
 
   return (
@@ -187,6 +185,12 @@ const TicTacToe = () => {
               Reset Game
             </button>
           </>
+        )}
+
+        {showPopup && (
+          <div className="popup">
+            🎉 Congratulations {winner} 🎉
+          </div>
         )}
       </div>
     </div>
